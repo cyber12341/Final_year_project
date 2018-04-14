@@ -111,6 +111,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         {
             case R.id.imageView:
                 Intent profile = new Intent(MainActivity.this, Profile.class);
+                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                drawer.closeDrawer(GravityCompat.START);
                 startActivity(profile);
                 break;
         }
