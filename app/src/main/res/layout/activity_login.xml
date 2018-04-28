@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#90000000"
+    android:background="@drawable/bgbemo"
     android:orientation="vertical"
     android:padding="50dp"
     tools:context="bemo.bemo.Login">
@@ -15,25 +15,23 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <TextView
+        <ImageView
             android:id="@+id/welcome"
             android:layout_marginBottom="50dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:gravity="center"
-            android:text="Welcome"
-            android:textColor="#ffffff"
-            android:textSize="40sp" />
+            android:src="@drawable/logo"/>
 
         <EditText
-            android:id="@+id/edtUsername"
+            android:id="@+id/edtEmail"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_margin="8dp"
-            android:textColor="#fff"
+            android:textColor="#000"
             android:gravity="center"
             android:singleLine="true"
-            android:textColorHint="#90ffffff"
+            android:textColorHint="#333"
             android:background="@drawable/rounded_edt"
             android:hint="Email Address" />
 
@@ -42,18 +40,44 @@
             android:layout_width="match_parent"
             android:layout_margin="8dp"
             android:layout_height="40dp"
-            android:textColor="#fff"
+            android:textColor="#000"
             android:singleLine="true"
             android:background="@drawable/rounded_edt"
             android:gravity="center"
-            android:textColorHint="#90ffffff"
+            android:textColorHint="#333"
             android:hint="Password"
             android:inputType="textPassword" />
 
         <android.support.v7.widget.CardView
             android:id="@+id/btn_SignIn"
             android:stateListAnimator="@animator/clicked_cardview"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_margin="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="@color/baseColor"
+            app:cardCornerRadius="20dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:text="Sign In"
+                    android:textColor="#fff" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/btn_SignUp"
+            android:stateListAnimator="@animator/clicked_cardview"
+            android:layout_width="150dp"
             android:layout_height="40dp"
             android:layout_margin="8dp"
             android:clickable="true"
@@ -71,18 +95,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:text="Sign In"
+                    android:text="Sign Up"
                     android:textColor="#fff" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
-        <TextView
-            android:id="@+id/btn_SignUp"
-            android:layout_marginTop="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#fff"
-            android:text="Sign up"/>
+
 
     </LinearLayout>
 
