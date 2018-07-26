@@ -8,11 +8,11 @@
          location permissions for the 'MyLocation' functionality. 
     -->
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-
 
     <application
         android:allowBackup="true"
@@ -34,26 +34,40 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".DriverTracking"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".Register"
             android:theme="@style/AppThemeNoTitleBar" />
         <activity
             android:name=".Profile"
             android:theme="@style/AppTheme.NoActionBar" />
-        <!--
-             The API key for Google Maps-based APIs is defined as a string resource.
-             (See the file "res/values/google_maps_api.xml").
-             Note that the API key is linked to the encryption key used to sign the APK.
-             You need a different API key for each encryption key, including the release key that is used to
-             sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
-        -->
+        <activity
+            android:name=".Maps"
+            android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".CustomerCall"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <service android:name=".Service.MyFirebaseIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".Service.MyFirebaseMessaging">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".Maps"
-            android:label="@string/title_activity_maps"></activity>
+            android:name=".TripDetail"
+            android:label="@string/title_activity_trip_detail" />
+        <activity android:name=".ActiveOrderActivity"></activity>
     </application>
 
 </manifest>

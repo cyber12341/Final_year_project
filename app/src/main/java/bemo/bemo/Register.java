@@ -90,6 +90,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                                 Snackbar.make(v, "Register Success fully", Snackbar.LENGTH_SHORT).show();
                                 Intent register = new Intent(Register.this, MainActivity.class);
                                 startActivity(register);
+                                finish();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override

@@ -7,27 +7,27 @@
         <item
             android:id="@+id/nav_camera"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:title="Daily Order" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/active_order"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="Active Order" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="Complete Order" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Amount of Income" />
     </group>
 
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/navSignOut"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:title="Sign Out" />
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"

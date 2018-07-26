@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "669149881359-stn0a3crolbcchamukljdu2lfecu39ej.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "bemo.bemo",
+            "certificate_hash": "e54dd72e197bb872d27802229fe0bc83a33e2b9d"
+          }
+        },
+        {
+          "client_id": "669149881359-4fusnucstg95d992mkrpfpp30pp60vtb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "bemo.bemo",
+            "certificate_hash": "f8934621c7bb7a61a5aad6fa39c13f7b0d3cb229"
+          }
+        },
+        {
           "client_id": "669149881359-5jfl1qnemgjomuov2vrfbus4ho4kv4mo.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +45,57 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "669149881359-5jfl1qnemgjomuov2vrfbus4ho4kv4mo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:669149881359:android:da2f34e8ea732c74",
+        "android_client_info": {
+          "package_name": "bemo.bemo_rider"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "669149881359-804f5r8gu4n4cm1um5mie3a895brl88r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "bemo.bemo_rider",
+            "certificate_hash": "f8934621c7bb7a61a5aad6fa39c13f7b0d3cb229"
+          }
+        },
+        {
+          "client_id": "669149881359-5jfl1qnemgjomuov2vrfbus4ho4kv4mo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYpKcGSlYcO6LrnuDfY_m3RmKOAoRCzV0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "669149881359-5jfl1qnemgjomuov2vrfbus4ho4kv4mo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

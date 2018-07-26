@@ -5,19 +5,35 @@ package bemo.bemo.Model;
  */
 
 public class Users {
-    private String email, password, name, phone;
+    private String email, password, name, phone, rates,avatarUrl;
 
-    public Users()
-    {
+    public Users() {
 
     }
 
-    public Users(String email, String password, String name, String phone)
-    {
+    public Users(String email, String password, String name, String phone, String rates, String avatarUrl) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.phone = phone;
+        this.rates = rates;
+        this.avatarUrl = avatarUrl;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
+
+    public String getRates() {
+        return rates;
+    }
+
+    public void setRates(String rates) {
+        this.rates = rates;
     }
 
     public String getEmail() {

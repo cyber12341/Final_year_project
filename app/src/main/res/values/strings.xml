@@ -6,4 +6,8 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_maps">Map</string>
+
+    <string name="google_direction_API">AIzaSyA5-_YRFVMotBYJlNN5tgb5XkbVkSUGMgc</string>
+    <string name="title_activity_driver_tracking">Map</string>
+    <string name="title_activity_trip_detail">Map</string>
 </resources>
