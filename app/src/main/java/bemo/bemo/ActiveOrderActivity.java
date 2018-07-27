@@ -13,6 +13,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import bemo.bemo.Adapter.ActiveOrderAdapter;
@@ -28,17 +29,16 @@ public class ActiveOrderActivity extends AppCompatActivity {
     RecyclerView.LayoutManager mLayoutManager;
     private RecyclerView.Adapter adapter;
     private List<DataActiveOrder> activeOrders;
-
+    ArrayList<HashMap<String, String>> arraylist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_active_order);
+        arraylist = new ArrayList<>();
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mLayoutManager = new LinearLayoutManager(this);
         activeOrders = new ArrayList<>();
-        adapter = new ActiveOrderAdapter(this, activeOrders);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(adapter);
         Common.getPushId = new getpushid();
         FirebaseDatabase.getInstance().getReference(Common.active_order).child(FirebaseAuth.getInstance().getUid())
                 .addValueEventListener(new ValueEventListener() {
@@ -46,21 +46,40 @@ public class ActiveOrderActivity extends AppCompatActivity {
                     public void onDataChange(final DataSnapshot dataSnapshot) {
                         for (DataSnapshot snap : dataSnapshot.getChildren()) {
                             Common.activeOrder = snap.getValue(ActiveOrder.class);
-                            FirebaseDatabase.getInstance().getReference(Common.user_rider_tbl).child(Common.activeOrder.getCustomerId())
+                            HashMap<String, String> map = new HashMap<String, String>();
+                            map.put("customerId", Common.activeOrder.getCustomerId());
+                            map.put("biaya", Common.activeOrder.getBiaya());
+                            map.put("status", Common.activeOrder.getStatus());
+                            map.put("tipe", Common.activeOrder.getTipe());
+                            map.put("lat", String.valueOf(Common.activeOrder.getLat()));
+                            map.put("lng", String.valueOf(Common.activeOrder.getLng()));
+                            map.put("latDestination", String.valueOf(Common.activeOrder.getLatDestination()));
+                            map.put("lngDestination", String.valueOf(Common.activeOrder.getLngDestination()));
+                            map.put("date", Common.activeOrder.getDate());
+                            map.put("pushId", snap.getKey());
+                            arraylist.add(map);
+                        }
+                        for (int i =0; i<arraylist.size(); i++)
+                        {
+                            final int finalI = i;
+                            FirebaseDatabase.getInstance().getReference(Common.user_rider_tbl).child(arraylist.get(i).get("customerId"))
                                     .addValueEventListener(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(final DataSnapshot dataSnapshot2) {
                                             Common.user = dataSnapshot2.getValue(Users.class);
-
                                             DataActiveOrder dataActiveOrder = new DataActiveOrder();
                                             dataActiveOrder.setNama(Common.user.getName());
-                                            dataActiveOrder.setBiaya(Common.activeOrder.getBiaya());
-                                            dataActiveOrder.setLocation(Common.activeOrder.getLat() + "," + Common.activeOrder.getLng());
-                                            dataActiveOrder.setTujuan(Common.activeOrder.getLatDestination() + "," + Common.activeOrder.getLngDestination());
-                                            dataActiveOrder.setStatus(Common.activeOrder.getStatus());
-                                            dataActiveOrder.setTipe(Common.activeOrder.getTipe());
+                                            dataActiveOrder.setCustomerId(arraylist.get(finalI).get("customerId"));
+                                            dataActiveOrder.setBiaya(arraylist.get(finalI).get("biaya"));
+                                            dataActiveOrder.setLocation(arraylist.get(finalI).get("lat") + "," + arraylist.get(finalI).get("lng"));
+                                            dataActiveOrder.setTujuan(arraylist.get(finalI).get("latDestination") + "," + arraylist.get(finalI).get("lngDestination"));
+                                            dataActiveOrder.setStatus(arraylist.get(finalI).get("status"));
+                                            dataActiveOrder.setTipe(arraylist.get(finalI).get("tipe"));
+                                            dataActiveOrder.setDate(arraylist.get(finalI).get("date"));
+                                            dataActiveOrder.setPushId(arraylist.get(finalI).get("pushId"));
                                             activeOrders.add(dataActiveOrder);
-                                            Log.e("active Order", String.valueOf(activeOrders.size()));
+                                            adapter = new ActiveOrderAdapter(ActiveOrderActivity.this, activeOrders);
+                                            mRecyclerView.setAdapter(adapter);
                                         }
 
                                         @Override
@@ -69,6 +88,7 @@ public class ActiveOrderActivity extends AppCompatActivity {
                                         }
                                     });
                         }
+
                     }
 
                     @Override

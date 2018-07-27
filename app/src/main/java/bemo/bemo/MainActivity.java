@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
@@ -16,11 +17,14 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,6 +35,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.firebase.geofire.GeoFire;
 import com.firebase.geofire.GeoLocation;
 import com.github.glomadrian.materialanimatedswitch.MaterialAnimatedSwitch;
@@ -287,10 +294,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         profile = (ImageView) header.findViewById(R.id.imageView);
         profile.setOnClickListener(this);
         TextView txtStars = (TextView) header.findViewById(R.id.txtStars);
-
-
+        TextView Nama = (TextView) header.findViewById(R.id.nama);
+        final ImageView photoProfile = header.findViewById(R.id.imageView);
+        if (Common.currentuser.getAvatarUrl() != null
+                && !TextUtils.isEmpty(Common.currentuser.getAvatarUrl())) {
+            Glide.with(this).load(Common.currentuser.getAvatarUrl()).asBitmap().centerCrop()
+                    .error(R.drawable.ic_launcher_round).diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(new BitmapImageViewTarget(photoProfile) {
+                        @Override
+                        protected void setResource(Bitmap resource) {
+                            super.setResource(resource);
+                            RoundedBitmapDrawable circularBitmapDrawable =
+                                    RoundedBitmapDrawableFactory.create(getApplicationContext().getResources(), resource);
+                            circularBitmapDrawable.setCircular(true);
+                            photoProfile.setImageDrawable(circularBitmapDrawable);
+                        }
+                    });
+        }
         navigationView.setNavigationItemSelectedListener(this);
         txtStars.setText(Common.currentuser.getRates());
+        Nama.setText(Common.currentuser.getName());
     }
 
     private void updateFirebaseToken() {

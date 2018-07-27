@@ -1,13 +1,13 @@
 package bemo.bemo.Model;
 
 public class ActiveOrder {
-    String customerId,tipe,biaya,status;
+    String customerId,tipe,biaya,status,date;
     double lat,lng,latDestination, lngDestination;
 
     public ActiveOrder() {
     }
 
-    public ActiveOrder(String customerId,String tipe,String biaya,String status, double lat, double lng, double latDestination, double lngDestination) {
+    public ActiveOrder(String customerId,String tipe,String biaya,String status,String date, double lat, double lng, double latDestination, double lngDestination) {
         this.customerId = customerId;
         this.lat = lat;
         this.lng = lng;
@@ -16,6 +16,15 @@ public class ActiveOrder {
         this.tipe = tipe;
         this.biaya = biaya;
         this.status = status;
+        this.date = date;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getStatus() {

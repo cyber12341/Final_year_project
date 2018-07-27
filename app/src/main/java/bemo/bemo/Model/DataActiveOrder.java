@@ -1,12 +1,12 @@
 package bemo.bemo.Model;
 
 public class DataActiveOrder {
-    String nama, img, tujuan,location,status, tipe, biaya;
+    String nama, img, tujuan,location,status, tipe, biaya,date,customerId,pushId;
 
     public DataActiveOrder() {
     }
 
-    public DataActiveOrder(String nama, String img, String tujuan, String location, String status, String tipe, String biaya) {
+    public DataActiveOrder(String nama, String img, String customerId, String pushId,String tujuan,String date, String location, String status, String tipe, String biaya) {
         this.nama = nama;
         this.img = img;
         this.tujuan = tujuan;
@@ -14,6 +14,33 @@ public class DataActiveOrder {
         this.status = status;
         this.tipe = tipe;
         this.biaya = biaya;
+        this.date = date;
+        this.customerId = customerId;
+        this.pushId = pushId;
+    }
+
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getNama() {

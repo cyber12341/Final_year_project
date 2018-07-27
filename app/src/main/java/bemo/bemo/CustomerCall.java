@@ -108,7 +108,6 @@ public class CustomerCall extends AppCompatActivity {
                 activeOrder.setTipe(tipe);
                 activeOrder.setBiaya(biaya);
                 activeOrder.setStatus("Pick Up the Passenger");
-                Log.e("biaya", biaya);
                 activeOrderRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(pushId)
                         .setValue(activeOrder).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

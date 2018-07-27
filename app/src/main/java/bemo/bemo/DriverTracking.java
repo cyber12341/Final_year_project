@@ -156,7 +156,7 @@ public class DriverTracking extends FragmentActivity implements
                     isPickedUp = true;
                     riderMarker.remove();
                     btnStartTrip.setEnabled(false);
-                    destinationMarker = mMap.addMarker(new MarkerOptions().position(new LatLng(latDestination, lngDestination)).title("You")
+                    destinationMarker = mMap.addMarker(new MarkerOptions().position(new LatLng(latDestination, lngDestination)).title("Destination")
                             .icon(BitmapDescriptorFactory.fromResource(R.drawable.destination_marker)));
                     GeoQuery geoQuery = geoFire.queryAtLocation(new GeoLocation(latDestination, lngDestination), 0.05f);
                     geoQuery.addGeoQueryEventListener(new GeoQueryEventListener() {

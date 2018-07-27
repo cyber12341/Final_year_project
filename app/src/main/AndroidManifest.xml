@@ -37,6 +37,9 @@
             android:name=".DriverTracking"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".DriverTrackings"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".Register"
             android:theme="@style/AppThemeNoTitleBar" />
         <activity
